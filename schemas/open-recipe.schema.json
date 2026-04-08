@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://openrecipestandard.org/schema/open-recipe.schema.json",
-  "title": "Open Recipe (ORF-aligned)",
-  "$comment": "Aligned with Open Recipe Format (https://open-recipe-format.readthedocs.io/). Ingredients use explicit JSON { name } instead of YAML single-key maps. Measurements include quantity_kind and unit_system for conversion. Extension fields use X- prefix per ORF.",
+  "title": "Open Recipe Standard",
+  "$comment": "Normative JSON Schema for the Open Recipe Standard: a portable, vendor-neutral format for encoding recipes for interchange between applications and libraries. Each ingredient is an object with a required name field. Measurements use quantity_kind and unit_system for unambiguous conversion. Provisional or vendor-specific fields use keys matching ^X-.",
   "type": "object",
   "required": ["recipe_name"],
   "properties": {
@@ -12,7 +12,7 @@
     },
     "recipe_uuid": {
       "type": "string",
-      "description": "Stable identifier (e.g. vendor prefix + unique id), analogous to ORF recipe_uuid."
+      "description": "Stable identifier (e.g. vendor prefix + unique id) for this recipe instance."
     },
     "notes": {
       "$ref": "#/$defs/NotesList",
@@ -36,7 +36,7 @@
     "oven_fan": {
       "type": "string",
       "enum": ["Off", "Low", "High"],
-      "description": "Convection setting; if omitted, treat as Off per ORF."
+      "description": "Convection setting; if omitted, implementations may treat as Off."
     },
     "oven_temp": {
       "$ref": "#/$defs/Measurement",
@@ -102,7 +102,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "description": "Ingredient name (ORF YAML used this as the map key)."
+          "description": "Human-readable ingredient name."
         },
         "amounts": {
           "type": "array",
@@ -149,7 +149,7 @@
       "additionalProperties": false
     },
     "Haccp": {
-      "description": "Either control_point or critical_control_point, not both (ORF).",
+      "description": "HACCP annotation: either control_point or critical_control_point, not both.",
       "oneOf": [
         {
           "type": "object",
