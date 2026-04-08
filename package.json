@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "validate-example": "node scripts/validate-example.mjs"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}
