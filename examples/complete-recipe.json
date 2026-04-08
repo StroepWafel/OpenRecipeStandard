@@ -3,6 +3,33 @@
   "recipe_name": "Chewy Chocolate Chip Cookies",
   "recipe_uuid": "example.org:recipe:chocolate-chip-chewy-001",
   "X-Last-Reviewed": "2026-04-08",
+  "categories": ["sweet", "dessert", "snack", "baked", "comfort_food"],
+  "cor": ["United States"],
+  "cuisine": ["American"],
+  "tags": ["chocolate", "chocolate chip", "cookies", "baking", "drop cookies"],
+  "dietary": ["vegetarian"],
+  "allergens": ["milk", "eggs", "wheat", "soy"],
+  "skill_level": "beginner",
+  "meal_type": ["snack", "dessert"],
+  "prep_time": {
+    "amount": 15,
+    "unit": "min",
+    "quantity_kind": "duration",
+    "unit_system": "metric"
+  },
+  "cook_time": {
+    "amount": 11,
+    "unit": "min",
+    "quantity_kind": "duration",
+    "unit_system": "metric"
+  },
+  "total_time": {
+    "amount": 56,
+    "unit": "min",
+    "quantity_kind": "duration",
+    "unit_system": "metric"
+  },
+  "equipment": ["oven", "refrigerator", "mixing bowl", "electric hand mixer", "baking sheet", "parchment paper"],
   "notes": [
     "All amounts are metric. Ingredient amounts are for base_yield; to scale, multiply each amount by (target / base_yield.amount) when units match (e.g. 48 cookies → multiply by 48/24 = 2).",
     "Rest dough at least 30 minutes for better flavor; overnight is best."
