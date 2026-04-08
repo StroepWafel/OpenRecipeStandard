@@ -4,198 +4,110 @@
   "recipe_uuid": "example.org:recipe:chocolate-chip-chewy-001",
   "X-Last-Reviewed": "2026-04-08",
   "notes": [
-    "Two yield sizes are encoded in parallel: ingredient amount[i] matches yields[i].",
+    "All ingredient amounts are for base_yield. To bake a different batch size, multiply every ingredient amount by (target / base_yield.amount) when using the same unit (e.g. 48 cookies → multiply by 48/24 = 2).",
     "Rest dough at least 30 minutes for better flavor; overnight is best."
   ],
-  "yields": [
-    {
-      "amount": 24,
-      "unit": "cookies",
-      "quantity_kind": "count",
-      "unit_system": "unspecified"
-    },
-    {
-      "amount": 48,
-      "unit": "cookies",
-      "quantity_kind": "count",
-      "unit_system": "unspecified"
-    }
-  ],
+  "base_yield": {
+    "amount": 24,
+    "unit": "cookies",
+    "quantity_kind": "count",
+    "unit_system": "unspecified"
+  },
   "ingredients": [
     {
       "name": "unsalted butter",
       "processing": ["softened", "room temperature"],
-      "amounts": [
-        {
-          "amount": 0.5,
-          "unit": "cup",
-          "quantity_kind": "volume",
-          "unit_system": "us_customary"
-        },
-        {
-          "amount": 1,
-          "unit": "cup",
-          "quantity_kind": "volume",
-          "unit_system": "us_customary"
-        }
-      ]
+      "amount": {
+        "amount": 0.5,
+        "unit": "cup",
+        "quantity_kind": "volume",
+        "unit_system": "us_customary"
+      }
     },
     {
       "name": "granulated sugar",
-      "amounts": [
-        {
-          "amount": 0.5,
-          "unit": "cup",
-          "quantity_kind": "volume",
-          "unit_system": "us_customary"
-        },
-        {
-          "amount": 1,
-          "unit": "cup",
-          "quantity_kind": "volume",
-          "unit_system": "us_customary"
-        }
-      ]
+      "amount": {
+        "amount": 0.5,
+        "unit": "cup",
+        "quantity_kind": "volume",
+        "unit_system": "us_customary"
+      }
     },
     {
       "name": "light brown sugar",
       "notes": ["Pack firmly into the measuring cup."],
-      "amounts": [
-        {
-          "amount": 0.5,
-          "unit": "cup",
-          "quantity_kind": "volume",
-          "unit_system": "us_customary"
-        },
-        {
-          "amount": 1,
-          "unit": "cup",
-          "quantity_kind": "volume",
-          "unit_system": "us_customary"
-        }
-      ]
+      "amount": {
+        "amount": 0.5,
+        "unit": "cup",
+        "quantity_kind": "volume",
+        "unit_system": "us_customary"
+      }
     },
     {
       "name": "egg",
       "processing": ["large"],
-      "amounts": [
-        {
-          "amount": 1,
-          "unit": "each",
-          "quantity_kind": "count",
-          "unit_system": "unspecified"
-        },
-        {
-          "amount": 2,
-          "unit": "each",
-          "quantity_kind": "count",
-          "unit_system": "unspecified"
-        }
-      ]
+      "amount": {
+        "amount": 1,
+        "unit": "each",
+        "quantity_kind": "count",
+        "unit_system": "unspecified"
+      }
     },
     {
       "name": "pure vanilla extract",
-      "amounts": [
-        {
-          "amount": 1,
-          "unit": "tsp",
-          "quantity_kind": "volume",
-          "unit_system": "us_customary"
-        },
-        {
-          "amount": 2,
-          "unit": "tsp",
-          "quantity_kind": "volume",
-          "unit_system": "us_customary"
-        }
-      ]
+      "amount": {
+        "amount": 1,
+        "unit": "tsp",
+        "quantity_kind": "volume",
+        "unit_system": "us_customary"
+      }
     },
     {
       "name": "all-purpose flour",
       "usda_num": "20081",
-      "amounts": [
-        {
-          "amount": 156,
-          "unit": "g",
-          "quantity_kind": "mass",
-          "unit_system": "metric"
-        },
-        {
-          "amount": 312,
-          "unit": "g",
-          "quantity_kind": "mass",
-          "unit_system": "metric"
-        }
-      ]
+      "amount": {
+        "amount": 156,
+        "unit": "g",
+        "quantity_kind": "mass",
+        "unit_system": "metric"
+      }
     },
     {
       "name": "baking soda",
-      "amounts": [
-        {
-          "amount": 0.5,
-          "unit": "tsp",
-          "quantity_kind": "volume",
-          "unit_system": "us_customary"
-        },
-        {
-          "amount": 1,
-          "unit": "tsp",
-          "quantity_kind": "volume",
-          "unit_system": "us_customary"
-        }
-      ]
+      "amount": {
+        "amount": 0.5,
+        "unit": "tsp",
+        "quantity_kind": "volume",
+        "unit_system": "us_customary"
+      }
     },
     {
       "name": "fine sea salt",
-      "amounts": [
-        {
-          "amount": 0.25,
-          "unit": "tsp",
-          "quantity_kind": "volume",
-          "unit_system": "us_customary"
-        },
-        {
-          "amount": 0.5,
-          "unit": "tsp",
-          "quantity_kind": "volume",
-          "unit_system": "us_customary"
-        }
-      ]
+      "amount": {
+        "amount": 0.25,
+        "unit": "tsp",
+        "quantity_kind": "volume",
+        "unit_system": "us_customary"
+      }
     },
     {
       "name": "semi-sweet chocolate chips",
-      "amounts": [
-        {
-          "amount": 12,
-          "unit": "oz",
-          "quantity_kind": "mass",
-          "unit_system": "us_customary"
-        },
-        {
-          "amount": 24,
-          "unit": "oz",
-          "quantity_kind": "mass",
-          "unit_system": "us_customary"
-        }
-      ],
+      "amount": {
+        "amount": 12,
+        "unit": "oz",
+        "quantity_kind": "mass",
+        "unit_system": "us_customary"
+      },
       "substitutions": [
         {
           "name": "dark chocolate chunks",
           "notes": ["Roughly chop a bar for irregular pockets of chocolate."],
-          "amounts": [
-            {
-              "amount": 340,
-              "unit": "g",
-              "quantity_kind": "mass",
-              "unit_system": "metric"
-            },
-            {
-              "amount": 680,
-              "unit": "g",
-              "quantity_kind": "mass",
-              "unit_system": "metric"
-            }
-          ]
+          "amount": {
+            "amount": 340,
+            "unit": "g",
+            "quantity_kind": "mass",
+            "unit_system": "metric"
+          }
         }
       ]
     }

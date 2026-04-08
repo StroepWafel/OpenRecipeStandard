@@ -1,19 +1,21 @@
 {
   "recipe_name": "Giving an Apple to a Friend",
+  "base_yield": {
+    "amount": 1,
+    "unit": "portion",
+    "quantity_kind": "count",
+    "unit_system": "unspecified"
+  },
   "ingredients": [
     {
       "name": "apple",
-      "amounts": [
-        {
-          "amount": 1,
-          "unit": "each",
-          "quantity_kind": "count",
-          "unit_system": "unspecified"
-        }
-      ]
+      "amount": {
+        "amount": 1,
+        "unit": "each",
+        "quantity_kind": "count",
+        "unit_system": "unspecified"
+      }
     }
   ],
-  "steps": [
-    { "step": "Give an apple to a friend." }
-  ]
+  "steps": [{ "step": "Give an apple to a friend." }]
 }

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://openrecipestandard.org/schema/open-recipe.schema.json",
   "title": "Open Recipe Standard",
-  "$comment": "Normative JSON Schema for the Open Recipe Standard: a portable, vendor-neutral format for encoding recipes for interchange between applications and libraries. Each ingredient is an object with a required name field. Measurements use quantity_kind and unit_system for unambiguous conversion. Provisional or vendor-specific fields use keys matching ^X-.",
+  "$comment": "Normative JSON Schema for the Open Recipe Standard: a portable, vendor-neutral format for encoding recipes for interchange between applications and libraries. Each ingredient is an object with a required name field. Measurements use quantity_kind and unit_system for unambiguous conversion. Ingredient amount fields are written for base_yield; scaling to other batch sizes is done by multiplying every ingredient amount (and comparing yields in the same quantity_kind/unit) by a scale factor. Provisional or vendor-specific fields use keys matching ^X-.",
   "type": "object",
   "required": ["recipe_name"],
   "properties": {
@@ -18,14 +18,13 @@
       "$ref": "#/$defs/NotesList",
       "description": "Recipe-level notes."
     },
-    "yields": {
-      "type": "array",
-      "description": "How much the recipe makes; parallel in order to per-yield ingredient amounts.",
-      "items": { "$ref": "#/$defs/Measurement" }
+    "base_yield": {
+      "$ref": "#/$defs/Measurement",
+      "description": "What the written ingredient amounts produce (e.g. 24 cookies, 6 servings). To scale: multiply each ingredient amount by (target_yield_amount / base_yield.amount) when both are in the same unit and quantity_kind, or by an explicit scale factor chosen by the user."
     },
     "ingredients": {
       "type": "array",
-      "description": "Ingredients in order of use; repeat lines when used at different stages.",
+      "description": "Ingredients in order of use; repeat lines when used at different stages. Each amount is for base_yield unless scaled at display time.",
       "items": { "$ref": "#/$defs/Ingredient" }
     },
     "steps": {
@@ -62,6 +61,25 @@
     "^X-": true
   },
   "additionalProperties": true,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "ingredients": {
+            "type": "array",
+            "minItems": 1
+          }
+        },
+        "required": ["ingredients"]
+      },
+      "then": {
+        "properties": {
+          "base_yield": { "$ref": "#/$defs/Measurement" }
+        },
+        "required": ["base_yield"]
+      }
+    }
+  ],
   "$defs": {
     "NotesList": {
       "type": "array",
@@ -98,17 +116,15 @@
     "IngredientSansSubstitutions": {
       "type": "object",
       "description": "Ingredient line without nested substitutions (used inside substitutions arrays).",
-      "required": ["name", "amounts"],
+      "required": ["name", "amount"],
       "properties": {
         "name": {
           "type": "string",
           "description": "Human-readable ingredient name."
         },
-        "amounts": {
-          "type": "array",
-          "description": "Parallel to yields when multiple yields are present.",
-          "items": { "$ref": "#/$defs/Measurement" },
-          "minItems": 1
+        "amount": {
+          "$ref": "#/$defs/Measurement",
+          "description": "Amount for base_yield; scale with the recipe when changing batch size."
         },
         "processing": {
           "type": "array",
@@ -126,14 +142,10 @@
     "Ingredient": {
       "type": "object",
       "description": "Full ingredient line including optional substitutions.",
-      "required": ["name", "amounts"],
+      "required": ["name", "amount"],
       "properties": {
         "name": { "type": "string" },
-        "amounts": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/Measurement" },
-          "minItems": 1
-        },
+        "amount": { "$ref": "#/$defs/Measurement" },
         "processing": {
           "type": "array",
           "items": { "type": "string" }
