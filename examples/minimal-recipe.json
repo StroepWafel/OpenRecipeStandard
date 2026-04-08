@@ -4,7 +4,7 @@
     "amount": 1,
     "unit": "portion",
     "quantity_kind": "count",
-    "unit_system": "unspecified"
+    "unit_system": "metric"
   },
   "ingredients": [
     {
@@ -13,7 +13,7 @@
         "amount": 1,
         "unit": "each",
         "quantity_kind": "count",
-        "unit_system": "unspecified"
+        "unit_system": "metric"
       }
     }
   ],

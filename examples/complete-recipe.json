@@ -4,43 +4,45 @@
   "recipe_uuid": "example.org:recipe:chocolate-chip-chewy-001",
   "X-Last-Reviewed": "2026-04-08",
   "notes": [
-    "All ingredient amounts are for base_yield. To bake a different batch size, multiply every ingredient amount by (target / base_yield.amount) when using the same unit (e.g. 48 cookies → multiply by 48/24 = 2).",
+    "All amounts are metric. Ingredient amounts are for base_yield; to scale, multiply each amount by (target / base_yield.amount) when units match (e.g. 48 cookies → multiply by 48/24 = 2).",
     "Rest dough at least 30 minutes for better flavor; overnight is best."
   ],
   "base_yield": {
     "amount": 24,
     "unit": "cookies",
     "quantity_kind": "count",
-    "unit_system": "unspecified"
+    "unit_system": "metric"
   },
   "ingredients": [
     {
       "name": "unsalted butter",
       "processing": ["softened", "room temperature"],
       "amount": {
-        "amount": 0.5,
-        "unit": "cup",
+        "amount": 118,
+        "unit": "ml",
         "quantity_kind": "volume",
-        "unit_system": "us_customary"
+        "unit_system": "metric"
       }
     },
     {
       "name": "granulated sugar",
       "amount": {
-        "amount": 0.5,
-        "unit": "cup",
+        "amount": 118,
+        "unit": "ml",
         "quantity_kind": "volume",
-        "unit_system": "us_customary"
+        "unit_system": "metric"
       }
     },
     {
       "name": "light brown sugar",
-      "notes": ["Pack firmly into the measuring cup."],
+      "notes": [
+        "Pack firmly when measuring by volume; these millilitres are for packed brown sugar."
+      ],
       "amount": {
-        "amount": 0.5,
-        "unit": "cup",
+        "amount": 118,
+        "unit": "ml",
         "quantity_kind": "volume",
-        "unit_system": "us_customary"
+        "unit_system": "metric"
       }
     },
     {
@@ -50,16 +52,16 @@
         "amount": 1,
         "unit": "each",
         "quantity_kind": "count",
-        "unit_system": "unspecified"
+        "unit_system": "metric"
       }
     },
     {
       "name": "pure vanilla extract",
       "amount": {
-        "amount": 1,
-        "unit": "tsp",
+        "amount": 5,
+        "unit": "ml",
         "quantity_kind": "volume",
-        "unit_system": "us_customary"
+        "unit_system": "metric"
       }
     },
     {
@@ -75,28 +77,28 @@
     {
       "name": "baking soda",
       "amount": {
-        "amount": 0.5,
-        "unit": "tsp",
+        "amount": 2.5,
+        "unit": "ml",
         "quantity_kind": "volume",
-        "unit_system": "us_customary"
+        "unit_system": "metric"
       }
     },
     {
       "name": "fine sea salt",
       "amount": {
-        "amount": 0.25,
-        "unit": "tsp",
+        "amount": 1.25,
+        "unit": "ml",
         "quantity_kind": "volume",
-        "unit_system": "us_customary"
+        "unit_system": "metric"
       }
     },
     {
       "name": "semi-sweet chocolate chips",
       "amount": {
-        "amount": 12,
-        "unit": "oz",
+        "amount": 340,
+        "unit": "g",
         "quantity_kind": "mass",
-        "unit_system": "us_customary"
+        "unit_system": "metric"
       },
       "substitutions": [
         {
@@ -139,7 +141,7 @@
     },
     {
       "step": "Preheat the oven and line baking sheets with parchment. Portion dough into mounds; leave space for spread.",
-      "notes": ["A #40 scoop (~1.5 tbsp) works well for uniform cookies."]
+      "notes": ["A medium cookie scoop (~45 ml) works well for uniform cookies."]
     },
     {
       "step": "Bake until edges are set and centers look slightly underdone; cool on the sheet 5 minutes, then transfer to a rack.",
@@ -150,16 +152,16 @@
   ],
   "oven_fan": "Off",
   "oven_temp": {
-    "amount": 350,
-    "unit": "F",
+    "amount": 177,
+    "unit": "C",
     "quantity_kind": "temperature",
-    "unit_system": "us_customary"
+    "unit_system": "metric"
   },
   "oven_time": {
     "amount": 11,
-    "unit": "minutes",
+    "unit": "min",
     "quantity_kind": "duration",
-    "unit_system": "unspecified"
+    "unit_system": "metric"
   },
   "source_authors": ["Jordan Example"],
   "source_url": "https://example.org/recipes/chewy-chocolate-chip",
