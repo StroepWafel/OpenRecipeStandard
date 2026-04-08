@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://openrecipestandard.org/schema/open-recipe.schema.json",
+  "$id": "https://food-for-eating.com/schema/open-recipe.schema.json",
   "title": "Open Recipe Standard",
   "$comment": "Normative JSON Schema for the Open Recipe Standard: a portable, vendor-neutral format for encoding recipes for interchange between applications and libraries. Mass, duration, temperature, and count use SI / metric conventions (unit_system metric). Volume may use metric units (ml, cl, L) or US customary kitchen measures (tsp, tbsp, cup) with unit_system us_customary. Optional metadata includes categories, cor, cuisine, tags, dietary/allergen hints, skill level, meal type, equipment, and active/prep/total times. For ingredient amounts, unit follows the allowlist for each quantity_kind. For base_yield when quantity_kind is count, unit is a free-form label. Provisional fields use keys matching ^X-.",
   "type": "object",
