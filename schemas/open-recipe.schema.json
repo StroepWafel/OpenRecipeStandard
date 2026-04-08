@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://openrecipestandard.org/schema/open-recipe.schema.json",
   "title": "Open Recipe Standard",
-  "$comment": "Normative JSON Schema for the Open Recipe Standard: a portable, vendor-neutral format for encoding recipes for interchange between applications and libraries. All measurements use SI / metric units only (unit_system is always metric). quantity_kind selects the dimension; unit must be a standard metric code from the allowlist. base_yield (recipe output) only allows quantity_kind count, mass, or volume. Ingredient amounts are written for base_yield; scaling multiplies each amount by a scale factor. Provisional or vendor-specific fields use keys matching ^X-.",
+  "$comment": "Normative JSON Schema for the Open Recipe Standard: a portable, vendor-neutral format for encoding recipes for interchange between applications and libraries. All measurements use SI / metric units only (unit_system is always metric). For ingredient amounts, unit follows the allowlist for each quantity_kind. For base_yield when quantity_kind is count, unit is a free-form label (e.g. cookies, slices). base_yield may be count, mass, or volume. Provisional or vendor-specific fields use keys matching ^X-.",
   "type": "object",
   "required": ["recipe_name"],
   "properties": {
@@ -20,7 +20,7 @@
     },
     "base_yield": {
       "$ref": "#/$defs/YieldMeasurement",
-      "description": "What the written ingredient amounts produce (e.g. 24 cookies, 750 g batter, 2 L soup). Only count, mass, or volume—not temperature or duration. Metric only. To scale: multiply each ingredient amount by (target_yield_amount / base_yield.amount) when both use the same unit and quantity_kind, or by an explicit scale factor."
+      "description": "What the written ingredient amounts produce. Only count, mass, or volume (not temperature or duration). For count output, unit is any non-empty label (e.g. cookies, muffins). For mass or volume, unit is a fixed metric code (g, ml, …). To scale: multiply each ingredient amount by (target_yield_amount / base_yield.amount) when comparable, or by an explicit scale factor."
     },
     "ingredients": {
       "type": "array",
@@ -106,7 +106,7 @@
         },
         "unit": {
           "type": "string",
-          "description": "Standard metric unit code for this quantity_kind."
+          "description": "Standard metric unit code for this quantity_kind (see allOf allowlists)."
         },
         "quantity_kind": { "$ref": "#/$defs/QuantityKind" },
         "unit_system": { "$ref": "#/$defs/UnitSystem" }
@@ -197,18 +197,45 @@
       ]
     },
     "YieldMeasurement": {
-      "description": "How much recipe output the written amounts represent. quantity_kind must be count, mass, or volume only. Metric only.",
-      "allOf": [
-        { "$ref": "#/$defs/Measurement" },
+      "description": "How much recipe output the written amounts represent: count, mass, or volume only. For count, unit is a free-form label (what is being counted). For mass or volume, unit uses the same fixed metric codes as Measurement.",
+      "oneOf": [
         {
           "type": "object",
+          "description": "Output counted in discrete units; unit is any non-empty custom label (e.g. cookies, egg rolls, slices).",
+          "required": ["amount", "unit", "quantity_kind", "unit_system"],
           "properties": {
-            "quantity_kind": {
+            "amount": {
+              "type": "number",
+              "description": "How many of the thing named by unit (e.g. 24 when unit is cookies)."
+            },
+            "unit": {
               "type": "string",
-              "enum": ["count", "mass", "volume"],
-              "description": "Measure output as a number of items (count), total mass, or total volume."
+              "minLength": 1,
+              "description": "Human-readable name for one counted item or batch (plural is fine), not limited to a fixed vocabulary."
+            },
+            "quantity_kind": { "const": "count" },
+            "unit_system": { "$ref": "#/$defs/UnitSystem" }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "description": "Output as total mass or volume using standard metric units.",
+          "required": ["amount", "unit", "quantity_kind", "unit_system"],
+          "allOf": [
+            { "$ref": "#/$defs/Measurement" },
+            {
+              "type": "object",
+              "properties": {
+                "quantity_kind": {
+                  "type": "string",
+                  "enum": ["mass", "volume"],
+                  "description": "Total mass or total volume of the recipe output."
+                }
+              }
             }
-          }
+          ],
+          "additionalProperties": false
         }
       ]
     },
