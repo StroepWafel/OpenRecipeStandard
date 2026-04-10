@@ -117,6 +117,10 @@
       "description": "Ordered preparation steps.",
       "items": { "$ref": "#/$defs/Step" }
     },
+    "oven_required": {
+      "type": "boolean",
+      "description": "Whether a conventional oven is required to complete the recipe. If true, baking or roasting in an oven is essential; if false, the dish can be made without one (e.g. stovetop- or cold-only). If omitted, implementations may infer from oven_temp, oven_time, and step text."
+    },
     "oven_fan": {
       "type": "string",
       "enum": ["Off", "Low", "High"],

@@ -177,6 +177,7 @@
       }
     }
   ],
+  "oven_required": true,
   "oven_fan": "Off",
   "oven_temp": {
     "amount": 177,
